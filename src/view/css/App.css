@@ -1,0 +1,13 @@
+/*component todo_control*/
+.filters li a.selected {
+  border-color: rgba(175, 47, 47, 0.1);
+}
+
+/*component todo_item*/
+.todo-list li.starred_todo {
+  font-weight: 400;
+  color: #522c2cf7;
+}
+.todo-list li .starred_completed {
+  fill: #d8d3d3;
+}

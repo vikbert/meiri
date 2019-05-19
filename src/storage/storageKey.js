@@ -1,0 +1,3 @@
+export const KEY_MEIRI_TODOS = "MEIRI_TODOS";
+export const KEY_MEIRI_CURRENT_DATE = "MEIRI_CURRENT_DATE";
+export const KEY_MEIRI_LOGS = "MEIRI_LOGS";

@@ -1,0 +1,36 @@
+{
+  "name": "mit-todo",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "thenby": "^1.3.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.1",
+    "react-scripts": "2.1.8",
+    "react-test-renderer": "^16.3.1"
+  },
+  "scripts": {
+    "start": "PORT=8080 react-scripts start",
+    "start:serve": "npx react-scripts build && npx serve -l tcp://0.0.0.0:8080 -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
