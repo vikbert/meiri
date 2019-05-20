@@ -20,8 +20,6 @@ export default function configureStore() {
     }
   };
 
-  console.log(initialState);
-
   const store = createStore(rootReducer, initialState, enhancer);
   store.subscribe(() => {
     let todoApp = store.getState().todoApp;
