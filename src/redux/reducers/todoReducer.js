@@ -46,6 +46,9 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_TODOS:
       return { ...state, todos: state.todos };
+    case types.FETCH_TODOS_SUCCEED:
+      console.log("reducer: handle event", action.todos);
+      return { ...state, todos: action.todos };
     case types.CREATE_TODO:
       return {
         ...state,

@@ -1,9 +1,6 @@
 import React from "react";
-
 import GitHub from "./components/Github";
-import TodoForm from "./redux/containers/TodoForm";
 import TodoList from "./redux/containers/TodoList";
-import TodoControl from "./redux/containers/TodoControl";
 import "./view/css/index.css";
 import "./view/css/App.css";
 

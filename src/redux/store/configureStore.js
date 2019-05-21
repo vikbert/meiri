@@ -13,7 +13,7 @@ export default function configureStore() {
 
   const initialState = {
     todoApp: {
-      todos: initLoad ? initTodos : window.todoStorage.fetchTodos(),
+      todos: initLoad ? initTodos : [],
       logs: window.todoStorage.fetchTodoLogs(),
       todosChanged: false,
       visibility: Filters.VISIBILITY_ALL

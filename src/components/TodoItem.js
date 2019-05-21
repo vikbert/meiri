@@ -1,77 +1,88 @@
-import React, {Component} from "react";
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
-import TodoTextInput from './TodoTextInput';
-import TodoStarIcon from '../redux/containers/TodoStarIcon';
+import React, { Component } from "react";
+import classnames from "classnames";
+import PropTypes from "prop-types";
+import TodoTextInput from "./TodoTextInput";
+import TodoStarIcon from "../redux/containers/TodoStarIcon";
 
 class TodoItem extends Component {
   state = {
     completed: this.props.todo.completed,
     starred: this.props.todo.starred,
-    editing: false,
+    editing: false
   };
 
-  handleCheckboxChange = event => {
+  handleCheckboxChange = (event) => {
     const isCompleted = event.target.checked;
     this.setState({
-      completed: isCompleted,
+      completed: isCompleted
     });
 
-    const newTodo = {...this.props.todo, completed: isCompleted};
+    const newTodo = { ...this.props.todo, completed: isCompleted };
 
     this.props.updateTodo(newTodo, this.props.todo);
   };
 
   handleDoubleClick = () => {
     this.setState({
-      editing: true,
+      editing: true
     });
   };
 
   handleToggleItemStarState = (starred) => {
     this.setState({
-      starred: starred,
+      starred: starred
     });
   };
 
   handleInputFieldUpdate = (text) => {
     if (text.length === 0) {
       this.props.deleteTodo(this.props.todo.id);
-    } else if (text !== this.props.todo.title) {
-      const newTodo = {...this.props.todo, title: text};
+    } else if (text !== this.props.todo.text) {
+      const newTodo = { ...this.props.todo, title: text };
       this.props.updateTodo(newTodo, this.props.todo);
     }
 
-    this.setState({editing: false});
+    this.setState({ editing: false });
   };
 
   render() {
     let itemView;
     if (this.state.editing) {
       itemView = (
-        <TodoTextInput editing={this.state.editing}
-                       text={this.props.todo.title}
-                       handleInputFieldUpdate={this.handleInputFieldUpdate}/>
+        <TodoTextInput
+          editing={this.state.editing}
+          text={this.props.todo.text}
+          handleInputFieldUpdate={this.handleInputFieldUpdate}
+        />
       );
     } else {
       itemView = (
         <div className="view">
-          <input className="toggle" type="checkbox"
-                 onChange={this.handleCheckboxChange}
-                 defaultChecked={this.state.completed}
+          <input
+            className="toggle"
+            type="checkbox"
+            onChange={this.handleCheckboxChange}
+            defaultChecked={this.state.completed}
           />
-          <label onDoubleClick={this.handleDoubleClick}>{this.props.todo.title}</label>
-          <TodoStarIcon todo={this.props.todo} toggleItemStarState={this.handleToggleItemStarState}/>
+          <label onDoubleClick={this.handleDoubleClick}>
+            {this.props.todo.text}
+          </label>
+          <TodoStarIcon
+            todo={this.props.todo}
+            toggleItemStarState={this.handleToggleItemStarState}
+          />
         </div>
       );
     }
     return (
-      <li className={classnames(
-        'todo',
-        {'starred_todo': this.state.starred},
-        {'completed': this.state.completed},
-        {'editing': this.state.editing},
-      )}>
+      <li
+        className={classnames(
+          "todo",
+          { starred_todo: this.state.starred },
+          { completed: this.state.completed },
+          { editing: this.state.editing }
+        )}
+      >
         {itemView}
       </li>
     );
@@ -81,7 +92,7 @@ class TodoItem extends Component {
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   updateTodo: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired
 };
 
 export default TodoItem;

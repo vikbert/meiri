@@ -1,9 +1,13 @@
-import { connect } from 'react-redux'
-import TodoList from '../../components/TodoList'
-import * as ListSelector from '../selectors/listSelector'
+import { connect } from "react-redux";
+import TodoList from "../../components/TodoList";
+import * as ListSelector from "../selectors/listSelector";
+import { loadTodos } from "../actions/todoActions";
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   todos: ListSelector.getFilteredTodos(state)
 });
 
-export default connect(mapStateToProps, {})(TodoList);
+export default connect(
+  mapStateToProps,
+  { loadTodos: loadTodos }
+)(TodoList);

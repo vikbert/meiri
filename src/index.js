@@ -35,7 +35,6 @@ window.todoStorage = {
         return {};
       }
 
-      console.log(logs);
       return JSON.parse(logs);
     } catch (err) {
       return undefined;
