@@ -4,7 +4,8 @@ import * as ListSelector from "../selectors/listSelector";
 import { loadTodos } from "../actions/todoActions";
 
 const mapStateToProps = (state) => ({
-  todos: ListSelector.getFilteredTodos(state)
+  todos: ListSelector.getFilteredTodos(state),
+  loading: state.loading
 });
 
 export default connect(

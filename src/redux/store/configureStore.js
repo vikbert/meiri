@@ -2,7 +2,6 @@ import { createStore } from "redux";
 import configureEnhancer from "./configureEnhancer";
 import rootReducer from "../reducers/index";
 import * as Filters from "../../constants/Filter";
-import initTodos from "../../storage/initTodos";
 import { dateToString } from "../../utils/date";
 
 export default function configureStore() {
@@ -13,23 +12,13 @@ export default function configureStore() {
 
   const initialState = {
     todoApp: {
-      todos: initLoad ? initTodos : [],
-      logs: window.todoStorage.fetchTodoLogs(),
+      todos: [],
       todosChanged: false,
       visibility: Filters.VISIBILITY_ALL
     }
   };
 
   const store = createStore(rootReducer, initialState, enhancer);
-  store.subscribe(() => {
-    let todoApp = store.getState().todoApp;
-
-    if (todoApp.todosChanged) {
-      window.todoStorage.saveTodos(todoApp.todos);
-      window.todoStorage.saveCurrentDate(dateToString());
-      window.todoStorage.saveTodoLogs(todoApp.logs);
-    }
-  });
 
   return store;
 }

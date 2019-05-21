@@ -36,8 +36,8 @@ class TodoItem extends Component {
 
   handleInputFieldUpdate = (text) => {
     if (text.length === 0) {
-      this.props.deleteTodo(this.props.todo.id);
-    } else if (text !== this.props.todo.text) {
+      this.props.deleteTodo(this.props.todo.key);
+    } else if (text !== this.props.todo.title) {
       const newTodo = { ...this.props.todo, title: text };
       this.props.updateTodo(newTodo, this.props.todo);
     }
@@ -51,7 +51,7 @@ class TodoItem extends Component {
       itemView = (
         <TodoTextInput
           editing={this.state.editing}
-          text={this.props.todo.text}
+          text={this.props.todo.title}
           handleInputFieldUpdate={this.handleInputFieldUpdate}
         />
       );
@@ -65,7 +65,7 @@ class TodoItem extends Component {
             defaultChecked={this.state.completed}
           />
           <label onDoubleClick={this.handleDoubleClick}>
-            {this.props.todo.text}
+            {this.props.todo.title}
           </label>
           <TodoStarIcon
             todo={this.props.todo}

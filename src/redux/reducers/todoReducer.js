@@ -39,23 +39,20 @@ const updateLogs = (state, action) => {
 };
 
 const deleteTodo = (state, action) => {
-  return state.todos.filter((todo) => todo.id !== action.id);
+  return state.todos.filter((todo) => todo.key !== action.key);
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case types.FETCH_TODOS:
-      return { ...state, todos: state.todos };
     case types.FETCH_TODOS_SUCCEED:
-      console.log("reducer: handle event", action.todos);
-      return { ...state, todos: action.todos };
-    case types.CREATE_TODO:
+      return { ...state, todos: action.todos, loading: false };
+    case types.CREATE_TODO_SUCCEED:
       return {
         ...state,
         todos: [action.todo, ...state.todos],
         todosChanged: true
       };
-    case types.UPDATE_TODO:
+    case types.UPDATE_TODO_SUCCEED:
       return {
         ...state,
         todos: updateTodo(state, action),

@@ -11,6 +11,8 @@ const config = {
 };
 
 const firebaseApp = firebase.initializeApp(config);
-const base = Rebase.createClass(firebaseApp.database());
+const firebaseDb = firebaseApp.database();
+const base = Rebase.createClass(firebaseDb);
+const rootUrl = "meiri";
 
-export { firebaseApp, base };
+export { firebaseApp, firebaseDb, base, rootUrl };
