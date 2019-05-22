@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://vikbert.github.io/meiri/",
+  "scripts": {
+    "start": "PORT=8080 react-scripts start",
+    "start:serve": "npx react-scripts build && npx serve -l tcp://0.0.0.0:8080 -s build",
+    "build": "react-scripts build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^16.8.4",
@@ -19,13 +28,6 @@
     "prop-types": "^15.6.1",
     "react-scripts": "2.1.8",
     "react-test-renderer": "^16.3.1"
-  },
-  "scripts": {
-    "start": "PORT=8080 react-scripts start",
-    "start:serve": "npx react-scripts build && npx serve -l tcp://0.0.0.0:8080 -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
